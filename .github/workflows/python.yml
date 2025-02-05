@@ -27,3 +27,13 @@ jobs:
       - name: Run tests
         run: |
           pytest
+          
+      - name: Generate Release Notes
+        run: |
+          python generate_release_notes.py
+          
+      - name: Upload Release Notes
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-notes
+          path: RELEASE_NOTES.md
